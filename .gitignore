@@ -59,3 +59,10 @@ typings/
 
 # next.js build output
 .next
+
+# client app build files
+client_app/build
+server/client
+
+# vscode files
+.vscode

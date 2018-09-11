@@ -1,0 +1,41 @@
+{
+  "name": "movies-app",
+  "version": "1.0.0",
+  "description": "Simple app for searching and borrowing movies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b-dabrowski/node-movies-app.git"
+  },
+  "keywords": [
+    "movie"
+  ],
+  "author": "Bart",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/b-dabrowski/node-movies-app/issues"
+  },
+  "homepage": "https://github.com/b-dabrowski/node-movies-app#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "colors": "^1.3.2",
+    "express": "^4.16.3",
+    "lodash": "^4.17.10",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.2.14",
+    "morgan": "^1.9.1",
+    "npm": "^6.4.1",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "mocha": "^5.2.0",
+    "supertest": "^3.3.0"
+  }
+}
