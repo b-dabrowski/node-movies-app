@@ -4,7 +4,7 @@
   "description": "Simple app for searching and borrowing movies",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha server/api/**/*.spec.js"
   },
   "repository": {
     "type": "git",
