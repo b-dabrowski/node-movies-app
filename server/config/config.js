@@ -11,7 +11,7 @@ const config = {
   port: process.env.PORT || 3000,
   env: '',
   logging: true,
-  movieApi: 'http://www.omdbapi.com/?apikey=90f87bf1',
+  movieApi: '',
   db: {
     url: process.env.DB_URL || 'NoConnectionString',
   },
