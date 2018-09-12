@@ -34,8 +34,8 @@ describe('[Movies]', () => {
       .expect(200)
       .end((err, resp) => {
         expect(resp.body.movie).to.be.an('object');
-        expect(resp.body.movie).has.property('Response');
-        expect(resp.body.movie).property('Response').eq('True');
+        expect(resp.body.movie).has.property('Title');
+        expect(resp.body.movie).property('Title').eq('Test');
         done();
       });
   });
