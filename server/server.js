@@ -6,7 +6,7 @@ const addGlobalMiddleware = require('./middleware/appMiddleware');
 const api = require('./api/api');
 
 const dbPromise = mongoose.connect(config.db.url, {
-  useMongoClient: true,
+  useNewUrlParser: true,
 });
 
 dbPromise.then((db) => {
