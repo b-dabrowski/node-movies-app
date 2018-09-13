@@ -9,9 +9,9 @@ function getFullApiUrl(title) {
 
 exports.get = (req, res, next) => {
   movies.find()
-    .then((allMovies) => {
+    .then((filteredMovies) => {
       res.json({
-        movies: allMovies,
+        movies: filteredMovies,
       });
     }, (err) => {
       next(err);
@@ -28,8 +28,15 @@ exports.getExternalData = (req, res, next) => {
           errors: { error },
         });
       } else {
-        req.movie = JSON.parse(body);
-        next();
+        const externalData = JSON.parse(body);
+        if (externalData.Response === 'True') {
+          req.movie = JSON.parse(body);
+          next();
+        } else {
+          res.status(422).json({
+            errors: { title: 'There is no movie with that title' },
+          });
+        }
       }
     });
 };

@@ -8,6 +8,23 @@ const request = require('supertest');
 const app = require('../../server');
 
 describe('[Movies]', () => {
+  it('should return an error if there is no movie with that title', (done) => {
+    request(app)
+      .post('/api/movies')
+      .send({
+        title: 'lkjasd321',
+      })
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(422)
+      .end((err, resp) => {
+        expect(resp.body.errors).to.be.an('object');
+        expect(resp.body.errors).has.property('title');
+        expect(resp.body.errors).property('title').eq('There is no movie with that title');
+        done();
+      });
+  });
+
   it('should return status 422 if no title req', (done) => {
     request(app)
       .post('/api/movies')
