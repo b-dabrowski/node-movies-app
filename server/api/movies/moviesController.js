@@ -33,7 +33,7 @@ exports.getExternalData = (req, res, next) => {
           req.movie = JSON.parse(body);
           next();
         } else {
-          res.status(400).json({
+          res.status(404).json({
             errors: { title: 'There is no movie with that title' },
           });
         }
