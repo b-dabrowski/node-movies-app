@@ -2,10 +2,11 @@
 const mongooseValidator = require('../../util/mongooseValidator');
 const comments = require('./commentsModel');
 
-function getQuery(parameters) {
+function getQuery(req) {
   const query = {};
-  if (parameters.movieId) {
-    query.Movie = parameters.movieId;
+  if (req.query.movieId || req.body.movieId) {
+    const movieId = req.query.movieId ? req.query.movieId : req.body.movieId;
+    query.Movie = movieId;
   }
 
   return query;
@@ -20,7 +21,7 @@ function getCommentObject(parameters) {
 }
 
 exports.get = (req, res, next) => {
-  const query = getQuery(req.query);
+  const query = getQuery(req);
 
   comments.find(query)
     .then((filteredComments) => {
@@ -67,8 +68,9 @@ exports.validate = (req, res, next) => {
 };
 
 exports.validateId = (req, res, next) => {
-  if (req.query.movieId) {
-    if (!mongooseValidator.isValidId(req.query.movieId)) {
+  if (req.query.movieId || req.body.movieId) {
+    const parameter = req.query.movieId ? req.query.movieId : req.body.movieId;
+    if (!mongooseValidator.isValidId(parameter)) {
       res.status(405).json({
         errors: {
           movieId: 'Movie id parameter is invalid',
