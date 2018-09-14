@@ -23,7 +23,8 @@
         }
     ],
     "schemes": [
-        "http"
+        "https",
+        "http"        
     ],
     "paths": {
         "/api/movies": {
