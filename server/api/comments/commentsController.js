@@ -52,13 +52,13 @@ exports.validate = (req, res, next) => {
   if (movieId && text) {
     next();
   } else if (!movieId) {
-    res.status(422).json({
+    res.status(405).json({
       errors: {
         movieId: 'Movie id parameter is required',
       },
     });
   } else {
-    res.status(422).json({
+    res.status(405).json({
       errors: {
         comments: 'Comments text parameter is required',
       },
@@ -69,7 +69,7 @@ exports.validate = (req, res, next) => {
 exports.validateId = (req, res, next) => {
   if (req.query.movieId) {
     if (!mongooseValidator.isValidId(req.query.movieId)) {
-      res.status(422).json({
+      res.status(405).json({
         errors: {
           movieId: 'Movie id parameter is invalid',
         },

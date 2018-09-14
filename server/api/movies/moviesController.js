@@ -33,7 +33,7 @@ exports.getExternalData = (req, res, next) => {
           req.movie = JSON.parse(body);
           next();
         } else {
-          res.status(422).json({
+          res.status(400).json({
             errors: { title: 'There is no movie with that title' },
           });
         }
@@ -60,7 +60,7 @@ exports.validate = (req, res, next) => {
   if (title) {
     next();
   } else {
-    res.status(422).json({
+    res.status(405).json({
       errors: { title: 'Title parameter is required' },
     });
   }
