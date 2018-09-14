@@ -4,7 +4,8 @@
   "description": "Simple app for searching and borrowing movies",
   "main": "index.js",
   "scripts": {
-    "test": "mocha server/api/**/*.spec.js"
+    "test": "mocha server/api/**/*.spec.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,8 @@
     "mongoose": "^5.2.14",
     "morgan": "^1.9.1",
     "npm": "^6.4.1",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "swagger-ui-express": "^4.0.1"
   },
   "devDependencies": {
     "chai": "^4.1.2",

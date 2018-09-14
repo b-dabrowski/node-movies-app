@@ -1,0 +1,324 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a sample server movies REST api",
+        "version": "1.0.0",
+        "title": "Movies REST api",
+        "termsOfService": "",
+        "contact": {
+            "email": "b.dabrowski@live.com"
+        },
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "tags": [{
+            "name": "movie",
+            "description": "Information about your movie"
+        },
+        {
+            "name": "comment",
+            "description": "Comment about movie"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/api/movies": {
+            "post": {
+                "tags": [
+                    "movie"
+                ],
+                "summary": "Add a new movie",
+                "description": "The user only needs to post a movie's title. Movies' information will be added from external API",
+                "operationId": "addMovie",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "title",
+                    "description": "Title of the movie that needs to be added to the database",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/Title"
+                    }
+                }],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },                    
+                    "405": {
+                        "description": "Validation exception"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "movie"
+                ],
+                "summary": "Get all movies",
+                "description": "Returns all information about movies stored in the database",
+                "operationId": "getMovie",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },                    
+                    "404": {
+                        "description": "Movie not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    }
+                }
+            }
+        },
+        "/api/comments": {
+            "post": {
+                "tags": [
+                    "comment"
+                ],
+                "summary": "Add a new comment",
+                "description": "The user need to valid movies' ID and comments text",
+                "operationId": "addComment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "ID of the movie that is in database and movies' comment",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/Comment"
+                    }
+                }],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },                    
+                    "405": {
+                        "description": "Validation exception"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "comment"
+                ],
+                "summary": "Get all comments",
+                "description": "Returns all comments in database or all comments about movies, if user send valid movieId parameter",
+                "operationId": "getComments",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                      "name": "movieId",
+                      "in": "query",
+                      "description": "An ID of comment's movie to return",
+                      "required": false,
+                      "type": "string",
+                      "example": "test"
+                    }
+                  ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },                    
+                    "405": {
+                        "description": "Validation exception"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Movies": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "Ratings": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "Source": {
+                                    "type": "string",
+                                    "example": "test"
+                                },
+                                "Value": {
+                                    "type": "string",
+                                    "example": "test"
+                                }
+                            }
+                        }
+                    },
+                    "_id": {
+                        "type": "string",
+                        "example": "507f191e810c19729de860ea"
+                    },
+                    "Title": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "Year": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "Rated": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "Released": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "Runtime": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "Genre": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "Director": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "Writer": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "Actors": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "Plot": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "Language": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "Country": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "Awards": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "Poster": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "Metascore": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "imdbRating": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "imdbVotes": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "imdbID": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "Type": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "DVD": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "BoxOffice": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "Production": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "Website": {
+                        "type": "string",
+                        "example": "test"
+                    }
+                }
+            }
+        },
+        "Comments": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "_id": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "Movie": {
+                        "type": "string",
+                        "example": "test"
+                    },
+                    "Text": {
+                        "type": "string",
+                        "example": "test"
+                    }
+                }
+            }
+        },        
+        "Title": {
+            "type": "object",
+            "required": [
+                "title"
+            ],
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "example": "test"
+                }
+            }
+        },
+        "Comment": {
+            "type": "object",
+            "required": [
+                "movieId",
+                "text"
+            ],
+            "properties": {
+                "movieId": {
+                    "type": "string",
+                    "example": "test"
+                },
+                "text": {
+                    "type": "string",
+                    "example": "test"
+                }
+            }
+        }
+    }
+}
