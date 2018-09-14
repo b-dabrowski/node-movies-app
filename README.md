@@ -24,7 +24,7 @@ docker pull mongo
 ```
 Run mongodb container
 ```
-docker run --name mongodb -d mongo
+docker run --name mongodb -d -p 27017:27017 mongo
 ```
 Pull node-movies-app repo
 ```
