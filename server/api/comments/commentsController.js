@@ -20,7 +20,7 @@ function getCommentObject(parameters) {
 }
 
 exports.get = (req, res, next) => {
-  const query = getQuery(req.body);
+  const query = getQuery(req.query);
 
   comments.find(query)
     .then((filteredComments) => {
@@ -67,8 +67,8 @@ exports.validate = (req, res, next) => {
 };
 
 exports.validateId = (req, res, next) => {
-  if (req.body.movieId) {
-    if (!mongooseValidator.isValidId(req.body.movieId)) {
+  if (req.query.movieId) {
+    if (!mongooseValidator.isValidId(req.query.movieId)) {
       res.status(422).json({
         errors: {
           movieId: 'Movie id parameter is invalid',

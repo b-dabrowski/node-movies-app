@@ -44,7 +44,7 @@ describe('[Comments]', () => {
   it('should return the empty array if there is no movie with that id', (done) => {
     request(app)
       .get('/api/comments')
-      .send({
+      .query({
         movieId: '53cb6b9b4f4ddef1ad47f943',
       })
       .set('Accept', 'application/json')
@@ -59,7 +59,7 @@ describe('[Comments]', () => {
   it('should return error if there is no valid movie id', (done) => {
     request(app)
       .get('/api/comments')
-      .send({
+      .query({
         movieId: 'magicNumber',
       })
       .set('Accept', 'application/json')
@@ -109,7 +109,7 @@ describe('[Comments]', () => {
 
         request(app)
           .get('/api/comments')
-          .send({
+          .query({
             movieId: movie._id,
           })
           .end((err, resp) => {
